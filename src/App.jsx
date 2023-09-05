@@ -13,7 +13,6 @@ const App = () => {
     symbols: false,
   })
   const [isCopied, setIsCopied] = useState(false)
-  const [copiedPassword, setCopiedPassword] = useState('')
   const [handleText, setHandleText] = useState('')
   const [length, setLength] = useState(8)
   const dispatch = useDispatch()
@@ -63,16 +62,11 @@ const App = () => {
   const handleCopy = (value) => {
     if (value.length > 0) {
       navigator.clipboard.writeText(value)
-      if (handleText !== '' && value === handleText) {
-        setIsCopied(true)
-      }
-      setCopiedPassword(value)
+      setIsCopied(true)
     }
-
 
     setTimeout(() => {
       setIsCopied(false)
-      setCopiedPassword('')
     }, 4000)
   }
 
@@ -160,7 +154,7 @@ const App = () => {
                 return (
                   <div className='flex justify-between items-center p-1' key={item}>
                     <input className='border-2 border-neutral-300 p-2 w-64 text-xs font-handjet' type="text" value={item} readOnly />
-                    <button className="text-xs p-2 border-2 border-neutral-300 bg-neutral-300 font-handjet hover:bg-neutral-400 hover:border-neutral-400 active:text-white active:duration-400" onClick={() => handleCopy(item)}>{copiedPassword === item ? 'Copied!' : 'Copy Text'}</button>
+                    <button className="text-xs p-2 border-2 border-neutral-300 bg-neutral-300 font-handjet hover:bg-neutral-400 hover:border-neutral-400 active:text-white active:duration-400" onClick={() => handleCopy(item)}>{isCopied ? 'Copied!' : 'Copy Text'}</button>
                   </div>)
               })}
             </section>
