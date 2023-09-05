@@ -156,7 +156,7 @@ const App = () => {
         <div className="flex items-center justify-center">
           <div className="mt-5 w-auto h-auto bg-white p-5">
             <section>{
-              passwords.slice(-5).map(item => {
+              passwords.reverse().slice(5).map(item => {
                 return (
                   <div className='flex justify-between items-center p-1' key={item}>
                     <input className='border-2 border-neutral-300 p-2 w-64 text-xs font-handjet' type="text" value={item} readOnly />

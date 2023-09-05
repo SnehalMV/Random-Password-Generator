@@ -5,7 +5,6 @@ const passwordSlice = createSlice({
   initialState: { list: [] },
   reducers: {
     updateList: (state, action) => {
-      console.log('reducer',action.payload);
       state.list = action.payload
     }
   }
